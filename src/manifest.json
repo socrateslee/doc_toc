@@ -1,0 +1,17 @@
+{
+   "web_accessible_resources": [
+    "doc_toc/*"
+   ],
+   "content_scripts": [ {
+      "all_frames": false,
+      "js": ["loader.js"],
+      "matches": ["http://tower.im/*", "https://tower.im/*"],
+      "run_at": "document_start"
+   } ],
+   "name": "Document Toc",
+   "short_name": "doc toc",
+   "description": "A simple tool add a toc(table of content) for markdown generated document on tower.im.",
+   "manifest_version": 2,
+   "permissions": ["tabs"],
+   "version": "1.0.0"
+}
