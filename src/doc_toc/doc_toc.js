@@ -59,25 +59,27 @@ function buildTowerDiv(){
     + "#_doc_toc li {padding-left: 5px; list-style-type: disc;list-style-position: inside;}"
     + "#_doc_toc li a {text-decoration: none}"
 
-    var toc_button = document.createElement("div")
-    toc_button.id = "_doc_toc_button"
-    toc_button.innerHTML = "<b>&#9776;</b>"
-    toc_button.onclick = function(){
-        var toc_div = document.getElementById("_doc_toc");
-        if(toc_div.style.display !== "none"){
-            toc_div.style.display = "none";
-        }
-        else{
-            toc_div.style.display = "block";
-        }
-    }
+    var toc_tip = document.createElement("div")
+    toc_tip.innerHTML = "点击&nbsp;☰&nbsp;展开或折叠"
+
     var tree = get_title_tree(document.getElementsByClassName("doc-content")[0], true)
     var toc_div = document.createElement("div")
     toc_div.id = "_doc_toc"
     toc_div.innerHTML = tree_to_dir(tree)
 
-    var toc_tip = document.createElement("div")
-    toc_tip.innerHTML = "点击&nbsp;☰&nbsp;展开或折叠"
+    var toc_button = document.createElement("div")
+    toc_button.id = "_doc_toc_button"
+    toc_button.innerHTML = "<b>&#9776;</b>"
+    toc_button.onclick = function(){
+        if(toc_div.style.display !== "none"){
+            toc_div.style.display = "none"
+            toc_tip.style.display = "none"
+        }
+        else{
+            toc_div.style.display = "block"
+            toc_tip.style.display = "block"
+        }
+    }
 
     var toc_panel = document.getElementById("_doc_toc_panel")
     if(!toc_panel){
