@@ -50,10 +50,11 @@ function tree_to_dir(node){
 
 function buildTowerDiv(){
     var cssElem = document.createElement('style');
+    var maxHeight = (window.innerHeight * 0.6) < 200 ? 200 : (window.innerHeight * 0.6)
     cssElem.type = 'text/css';
     cssElem.innerHTML = " "
     + "#_doc_toc_panel {position:fixed;top:30px;padding: 1em;left:30px;display:block;background-color:#eeeeee;font-size:0.8em;border-radius:5px;}"
-    + "#_doc_toc {max-width:300px; max-height:800px;overflow: auto}"
+    + "#_doc_toc {max-width:300px; max-height:" + maxHeight.toString() + "px;overflow: auto}"
     + "#_doc_toc_button b {font-size: 2em}"
     + "#_doc_toc ul {padding-left: 10px}"
     + "#_doc_toc li {padding-left: 5px; list-style-type: disc;list-style-position: inside;}"
