@@ -17,7 +17,7 @@ function get_title_tree(elem, resetId, idPrefix){
     var path = [root]
     for(var i=0; i<elem.childNodes.length;i++){
         node = elem.childNodes[i]
-        if(node.tagName && /[hH][1-6]/.test(node.tagName.toUpperCase()) && node.getAttribute('id')){
+        if(node.tagName && /[hH][1-6]/.test(node.tagName.toUpperCase())){
             var currNode = path.pop()
             var newNode = {info: [node.tagName.toUpperCase(), node.textContent, get_node_id(node)],
                            children: []}
