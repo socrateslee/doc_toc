@@ -1,3 +1,13 @@
+function jump_to_hash(){
+	var anchor = location.hash.substr(1);
+	if(anchor){
+		var node = document.getElementById(anchor);
+		if(node){
+			node.scrollIntoView();
+		}
+	}
+}
+
 function get_title_tree(elem, resetId, idPrefix){
     resetId = typeof resetId !== 'undefined' ? resetId : false;
     idPrefix = typeof idPrefix !== 'undefined' ? idPrefix : "_toc_auto";
@@ -124,11 +134,12 @@ function bindTower(){
     var observer = new WebKitMutationObserver(function(mutations) {
         if(/(.*?)tower\.im\/projects\/(.*?)\/docs\/(.*?)\/([^e]|$)/.test(document.location.toString())){
             mutations.forEach(function(mutation) {
-    	        for (var i = 0; i < mutation.addedNodes.length; i++)
+    	        for (var i = 0; i < mutation.addedNodes.length; i++) {
     	           var node = mutation.addedNodes[i]
                    if(node.classList.contains("page") && node.classList.contains("page-1") && node.classList.contains("simple-pjax")) {
                        bindDocNode(node)
-                   }
+				       }
+				   }
                 })
         }
         else{
@@ -141,4 +152,5 @@ function bindTower(){
 bindTower()
 if(/(.*?)tower\.im\/projects\/(.*?)\/docs\/(.*?)\/([^e]|$)/.test(document.location.toString())){
     buildTowerDiv()
+	setTimeout(jump_to_hash, 0)
 }
